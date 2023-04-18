@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Rubik:wght@700&display=swap');
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+hr {
+    color: rgb(42, 42, 42);
+    margin-top: 0;
+}
+.logo {
+    padding: 0px;
+    font-size: 12px;
+    color: #fff;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 3px;
+}
+.title-h1 {
+    color: rgb(216, 154, 35);
+}
+.title-sub {
+    font-style: italic;
+}
+
+.lista {
+    display: flex;
+    list-style: none;
+    border: 1px solid tomato;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    font-size: 18px;
+    color: rgb(231, 231, 231);
+}
+.options {
+    line-height: 4;
+    margin:1.5em;
+    position: relative;
+    color: #b3b3b3;
+    font-weight: bold;
+}
+.options:before {
+    position: absolute;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    background-color: #fff;
+    transition: all .3s;
+}
+.options:hover {
+    color: #fff;
+    font-weight: bold;
+}
+.options:hover::before {
+    width: 100%;  
+}
+.options::before {
+    left: 50%;
+}
+.options:hover::before{
+    left: 0;
+}
+figure {
+    width: 30px;
+}
+img {
+    width: 100%;
+    color: #fff;
+}
+.icon {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: auto;
+    color: #b3b3b3;
+    margin: 10px 12px 0px 12px ;
+}
+.icon:hover {
+    color: #fff;
+}

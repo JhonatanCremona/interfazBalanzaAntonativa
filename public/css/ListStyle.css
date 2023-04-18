@@ -1,0 +1,99 @@
+.card {
+    margin: 10px;
+    display: flex;
+    background-color: #262626;
+    border-radius: 20px;
+    justify-content: space-evenly;
+    max-width: 480px;
+}
+figure {
+    margin-right: 10px;
+}
+.list {
+    color: rgb(209, 152, 41);
+}
+h3 {
+    margin-top: 13px;
+    margin-bottom: 0;
+    text-align: initial;
+}
+.sub-text {
+    text-align: initial;
+    margin-top: 0;
+}
+
+.iconos {
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 1px solid yellow;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 5px;
+    color:#b3b3b3;
+}
+.iconos:hover {
+    color: #fff;
+    background-color: #000;
+}
+.box-card {
+    display: flex;
+    align-items: center;
+}
+
+.iconos-button {
+    margin-left: 100px ;
+}
+
+.button-icon {
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+
+.box-cards {
+    border: 1px solid yellow;
+    margin-top: 47px;
+}
+
+input[type="radio"]{
+    vertical-align: bottom;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.3rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: gray;
+  }
+input[type="radio"]:checked + * {
+    color: teal;
+  }
+input[type="radio"]:checked + *::before {
+    background: radial-gradient(teal 0%, teal 40%, transparent 50%, transparent);
+    border-color: teal;
+  }
+  
+  /* basic layout */
+  fieldset {
+    margin: 20px;
+    max-width: 400px;
+  }
+input[type="radio"] + * {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+  }
+.buttonImprimir {
+    max-width:170px;
+    font-weight: bold;
+    color: #b3b3b3;
+    transition: all .3s;
+    box-shadow: 0 0 0 1px hsla(0,0%,100%,.2), 0 0 4px hsla(0,0%,100%,.2), 0 0 24px hsla(0,0%,100%,.2);
+}
+
+.buttonImprimir:hover {
+    border: 1px solid rgb(209, 152, 41);
+    color: rgb(209, 152, 41);
+}
+.box-cards {
+    display: flex;
+    justify-content: space-evenly;
+}
