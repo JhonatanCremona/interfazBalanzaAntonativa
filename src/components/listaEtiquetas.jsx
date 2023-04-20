@@ -1,15 +1,25 @@
-import { useContext } from "react";
+//Dependencias
+import { useContext, useEffect, useState } from "react";
 import { EtiquetaContext } from "./context/EtiquetaContext";
-
 import { motion } from 'framer-motion'
-import "../../public/css/ListStyle.css";
+
+//Componentes
 import { Title } from "./lista/Title";
 import { Instrucciones } from "./lista/Instrucciones";
+import { Toaster, toast } from 'sonner'
+
+//Styls 
+import "../../public/css/ListStyle.css";
 
 export const ListaEtiqueta = () => {
     const { etiqueta } = useContext(EtiquetaContext);
-    console.log({etiqueta});
-    
+    const [etiquetaDelete, setEtiquetaDelete] = useState({
+        id:"",
+        name:"",
+        estado:false
+    });
+    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false})
+    console.log(typeof(etiquetaPrint));    
     const variants = {
         hidden: {
           opacity: 0
@@ -21,17 +31,65 @@ export const ListaEtiqueta = () => {
             duration: 1
           }
         })
-      }
-    const handleState = () => {
-
+    }
+    async function fetchMethod(apiDel, settings) {
+        console.log(apiDel);
+        const response = await fetch(apiDel, settings)
+        return await response.json()
     } 
+
+    useEffect(()=>{
+        if (etiquetaDelete.estado === true) {
+            const apiUrl = `http://localhost:5000/api/${etiquetaDelete.id}`
+            const settings = {
+                method: "Delete",
+            }
+            fetchMethod(apiUrl, settings)
+                .then(response => console.log(response.json))
+                .catch(error => console.log(error))
+            toast.message(`Eliminaste la Etiqueta:`, {
+                description: ` - ${etiquetaDelete.name} -`,
+                style: {
+                    borderTop : '5px solid red',
+                    }
+            })
+            setEtiquetaDelete({
+                id:"",
+                name:"",
+                estado:false
+            })
+            
+
+        }
+    },[etiquetaDelete.estado]);
+
+    useEffect(()=> {
+        if (etiquetaPrint.estado === true) {
+            console.log("Me ejecute");
+            const apiUrl = `http://localhost:5000/api/imprimir/${etiquetaPrint.id}`
+            const settings = {
+                method: "GET",
+            }
+            fetchMethod(apiUrl, settings)
+                .then(response => console.log(response.json))
+                .catch(error => console.log(error))
+            toast.success(`Imprimiendo etiqueta:`, {
+                    style: {
+                        borderTop : '5px solid red',
+                        }
+                })
+            SetEtiquetaPrint(false)
+        }
+    }, [etiquetaPrint.estado])
+    
 
     return (
         <>
             <Title/>
             <div className="box-cards">
+            <Toaster position="top-left"/>
+                <form onSubmit={(e) => e.preventDefault()}>
                 
-                <form onSubmit={handleState}>
                 {etiqueta.map((etiqueta) => {
                     return (
                         <motion.div
@@ -57,25 +115,30 @@ export const ListaEtiqueta = () => {
                                     </div>
 
                                     <div className="iconos-button">
-                                        <button className="button-icon">
+                                        <button className="button-icon" >
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 iconos " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
                                         </button>
                                 
-                                        <button className="button-icon">
+                                        <button className="button-icon" onClick={(e) => {
+                                            setEtiquetaDelete({
+                                                id: etiqueta.id,
+                                                name:etiqueta.nameEtiqueta,
+                                                estado:true
+                                            })
+                                        }}>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6  iconos delete" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </button>
                                     </div>
-                                    <input type="radio" id="html" name = "test" value={etiqueta.nameEtiqueta}/>
+                                    <input type="radio" id="html" name = "test" value={etiqueta.nameEtiqueta} onChange={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
                                 </div>
                             </article>
                         </motion.div>
                     )
                 })}
-                <button className="buttonImprimir"> Imprimir </button>
                 </form>
                 <Instrucciones/>
             </div>

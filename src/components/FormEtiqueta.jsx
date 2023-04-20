@@ -1,6 +1,10 @@
 //Hooks
 import { useState } from "react";
 
+//Componentes
+import { Toaster, toast } from 'sonner'
+
+//Styls
 import "../../public/styles/form.css";
 
 
@@ -46,10 +50,13 @@ export const FormEtiqueta = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (settings.body ) {
+            
+        }
         guardarEtiqueta(API,settings)
             .then((data) => console.log(data))
             .catch(err => console.log(err));
-        console.log("Crear Etiqueta");
+            toast.success('Registro exitoso!')
     };
 
     const opciones = [
@@ -95,6 +102,7 @@ export const FormEtiqueta = () => {
     }
     return (
         <div>
+            <Toaster position="top-left" richColors/>
             <form className="formPost" onSubmit={handleSubmit}>
                 <article className="caja">
                     {opciones.map(({id, type, className, data, examples}) => {

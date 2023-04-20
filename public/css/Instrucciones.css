@@ -9,11 +9,12 @@
     flex-direction: column;
 }
 .Ins {
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(38, 38, 38);
-    margin-bottom: 16px;
+    border: none !important;
+    border-radius: 5px !important;
+    background-color: rgb(38, 38, 38) !important;
+    margin-bottom: 16px !important;
 }
+
 .title-content {
     font-size: 22px;
     font-weight: 600;

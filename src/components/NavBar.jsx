@@ -1,5 +1,6 @@
 import "../../public/css/nav.css"
 import { Link } from "react-router-dom"
+import { NavLink } from "./lista/NavLink";
 import { BellIcon } from  '@heroicons/react/outline';
 
 export const NavBar = () => {
@@ -40,7 +41,7 @@ export const NavBar = () => {
                     {
                         opciones.map(({id, href, text}) => {
                             return (
-                                <li key={id}><Link className="options" to={href}>{text}</Link> </li>
+                                <li key={id}><NavLink to={href}>{text}</NavLink> </li>
                             )
                         })
                     }
