@@ -3,6 +3,7 @@ import { useState } from "react";
 
 //Componentes
 import { Toaster, toast } from 'sonner'
+import { Title } from "./lista/Title";
 
 //Styls
 import "../../public/styles/form.css";
@@ -65,6 +66,7 @@ export const FormEtiqueta = () => {
             type: "text",
             className:"text-input",
             data: "nameEtiqueta",
+            text:"Nombre Etiqueta",
             examples: "Etiqueta Jamon"
         },
         {
@@ -72,6 +74,7 @@ export const FormEtiqueta = () => {
             type: "text",
             className:"text-input",
             data: "producto",
+            text:"Producto",
             examples: "Ej: P32J/1"
         },
         {
@@ -79,6 +82,7 @@ export const FormEtiqueta = () => {
             type: "text",
             className:"text-input",
             data: "lote",
+            text:"Lote",
             examples:"Ej:4575"
         },
         {
@@ -86,6 +90,7 @@ export const FormEtiqueta = () => {
             type: "date",
             className:"text-input",
             data: "fechaVencimiento",
+            text:"Fecha Vencimiento",
             examples: "Ej:2023-11-4"
         },
         {
@@ -93,6 +98,7 @@ export const FormEtiqueta = () => {
             type: "text",
             className:"text-input",
             data:"operario",
+            text: "Operario",
             examples:"Ej:Carlos"
         }   
     ]
@@ -102,14 +108,15 @@ export const FormEtiqueta = () => {
     }
     return (
         <div>
+            <Title textTile={"Registrar Etiqueta"}/>
             <Toaster position="top-left" richColors/>
             <form className="formPost" onSubmit={handleSubmit}>
                 <article className="caja">
-                    {opciones.map(({id, type, className, data, examples}) => {
+                    {opciones.map(({id, type, className, data, examples,text}) => {
                         return (
                             <div key={id} className="input-container">
-                                <label htmlFor={data} className="label" style={espaciosLetra}>{data.toUpperCase()}</label>
-                                <input type={type} onChange={handleChange} className={className} id={data} name={data} placeholder={examples}/>
+                                <label htmlFor={data} className="label" style={espaciosLetra}>{text.toUpperCase()}</label>
+                                <input type={type} onChange={handleChange} className={className} id={data} name={data} placeholder={examples} required/>
                                 {console.log(handleChange)}
                             </div>
                         )

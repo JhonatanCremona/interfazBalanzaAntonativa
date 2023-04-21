@@ -1,11 +1,11 @@
 import "../../../public/css/Title.css"
 
 
-export const Title = () => {
+export const Title = ({textTile, subTitle}) => {
     return (
         <section className="box-title">
-            <h3 className="titleList">Imprimir Etiqueta</h3>
-            <p className="suTitleList">Seleccione la etiqueta que desea Imprimir</p>
+            <h3 className="titleList">{textTile}</h3>
+            <p className="suTitleList">{subTitle}</p>
         </section>
     )
 }

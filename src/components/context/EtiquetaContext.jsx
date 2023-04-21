@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect, useReducer } from "react";
-import { reducer } from "../../api/reducer";
+
 
 
 
@@ -19,8 +19,9 @@ export const EtiquetaContextProvaider = ({ children}) => {
         .catch(err => console.log(err));
     },[]);
     console.log({etiqueta});
+    const ordernarId = etiqueta.sort((a, b) => a.id - b.id)
     return (
-        <EtiquetaContext.Provider value={{etiqueta}}>
+        <EtiquetaContext.Provider value={{ordernarId}}>
             {children}
         </EtiquetaContext.Provider>
     )

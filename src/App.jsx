@@ -10,6 +10,7 @@ import { ListaEtiqueta } from "./components/listaEtiquetas";
 import { EtiquetaContextProvaider } from './components/context/EtiquetaContext';
 import { Contacts } from './components/Contact';
 import { Layout } from './components/Layaout';
+import { Footer } from './components/Footer';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             <Route path='contacts' element={<Contacts/>}/>
           </Route>
         </Routes>
+        <Footer/>
       </EtiquetaContextProvaider>
       
   )

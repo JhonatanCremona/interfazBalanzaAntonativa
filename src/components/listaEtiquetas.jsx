@@ -12,14 +12,13 @@ import { Toaster, toast } from 'sonner'
 import "../../public/css/ListStyle.css";
 
 export const ListaEtiqueta = () => {
-    const { etiqueta } = useContext(EtiquetaContext);
+    const { ordernarId } = useContext(EtiquetaContext);
     const [etiquetaDelete, setEtiquetaDelete] = useState({
         id:"",
         name:"",
         estado:false
     });
-    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false})
-    console.log(typeof(etiquetaPrint));    
+    const [etiquetaPrint, SetEtiquetaPrint] = useState({id:"",estado:false})   
     const variants = {
         hidden: {
           opacity: 0
@@ -85,15 +84,15 @@ export const ListaEtiqueta = () => {
 
     return (
         <>
-            <Title/>
+            <Title textTile={"Imprimir Etiqueta"} subTitle={"Seleccione la etiqueta que desea Imprimir"}/>
             <div className="box-cards">
             <Toaster position="top-left"/>
                 <form onSubmit={(e) => e.preventDefault()}>
                 
-                {etiqueta.map((etiqueta) => {
+                {ordernarId.map((etiqueta, index) => {
                     return (
                         <motion.div
-                        custom={{ delay: (etiqueta.id + 1) * 0.1 }}
+                        custom={{ delay: (index + 1) * 0.1 }}
                         initial='hidden'
                         animate='visible'
                         exit='hidden'
@@ -119,7 +118,7 @@ export const ListaEtiqueta = () => {
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 iconos " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
-                                        </button>
+                                        </button> 
                                 
                                         <button className="button-icon" onClick={(e) => {
                                             setEtiquetaDelete({
