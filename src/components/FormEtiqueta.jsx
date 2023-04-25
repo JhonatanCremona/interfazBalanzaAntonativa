@@ -23,7 +23,6 @@ export const FormEtiqueta = () => {
             ...newEtiqueta,
             [event.target.name] : event.target.value,
         });
-
     };
 
     const API = "http://localhost:5000/api/guardar";
@@ -39,10 +38,7 @@ export const FormEtiqueta = () => {
         referrerPolicy: "no-referrer", 
         body: JSON.stringify(newEtiqueta), 
       }
-      console.log("dato",settings.body);
-
-
-    
+ 
     async function guardarEtiqueta(API, settings) {
         const response = await fetch(API, settings)
         console.log(response.json);
@@ -51,13 +47,10 @@ export const FormEtiqueta = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (settings.body ) {
-            
-        }
         guardarEtiqueta(API,settings)
-            .then((data) => console.log(data))
-            .catch(err => console.log(err));
-            toast.success('Registro exitoso!')
+            .then((data) => toast.success('Registro exitoso!'))
+            .catch(err => toast.error("Ocurrio un error - sin conexion ERROR 500"));
+            
     };
 
     const opciones = [
@@ -117,7 +110,6 @@ export const FormEtiqueta = () => {
                             <div key={id} className="input-container">
                                 <label htmlFor={data} className="label" style={espaciosLetra}>{text.toUpperCase()}</label>
                                 <input type={type} onChange={handleChange} className={className} id={data} name={data} placeholder={examples} required/>
-                                {console.log(handleChange)}
                             </div>
                         )
                     })}
