@@ -70,13 +70,22 @@ export const ListaEtiqueta = () => {
                 method: "GET",
             }
             fetchMethod(apiUrl, settings)
-                .then(response => console.log(response.json))
-                .catch(error => console.log(error))
-            toast.success(`Imprimiendo etiqueta:`, {
+                .then(response => toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
+                    style: {
+                        borderTop : '5px solid green',
+                        fontSize: "20px",
+                        transition: "all 0.3s"
+                        }
+                }))
+                .catch(error => toast.error(`Sin conexión al server ... 🖶`, {
                     style: {
                         borderTop : '5px solid red',
+                        fontSize: "20px",
+                        transition: "all 0.3s"
                         }
-                })
+                }))
+                
+            
             SetEtiquetaPrint(false)
         }
     }, [etiquetaPrint.estado])
@@ -110,7 +119,7 @@ export const ListaEtiqueta = () => {
                                 <div className="box-card">
                                     <div>
                                         <h3>{etiqueta.nameEtiqueta != null ? etiqueta.nameEtiqueta : "Etiqueta null"}</h3>
-                                        <p className="sub-text">{etiqueta.producto}</p>
+                                        <p className="sub-text">{etiqueta.lote}</p>
                                     </div>
 
                                     <div className="iconos-button">
@@ -131,8 +140,9 @@ export const ListaEtiqueta = () => {
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </button>
+                                        <input type="radio" id="html" name = "test" value={etiqueta.nameEtiqueta} onChange={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
                                     </div>
-                                    <input type="radio" id="html" name = "test" value={etiqueta.nameEtiqueta} onChange={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
+                                    
                                 </div>
                             </article>
                         </motion.div>

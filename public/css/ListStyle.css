@@ -3,7 +3,6 @@
     display: flex;
     background-color: #262626;
     border-radius: 20px;
-    justify-content: space-evenly;
     max-width: 480px;
 }
 figure {
@@ -16,6 +15,7 @@ h3 {
     margin-top: 13px;
     margin-bottom: 0;
     text-align: initial;
+    min-width: 180px;
 }
 .sub-text {
     text-align: initial;
@@ -44,12 +44,15 @@ h3 {
 }
 
 .iconos-button {
-    margin-left: 100px ;
+    margin-left: 50px ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .button-icon {
-    margin-top: 0;
-    margin-bottom: 28px;
+    margin-top: 0px;
+    margin-bottom: 22px;
 }
 
 .box-cards {
@@ -62,8 +65,8 @@ h3 {
 
 input[type="radio"]{
     vertical-align: bottom;
-    width: 2rem;
-    height: 2rem;
+    width: 3.4rem;
+    height: 3.4rem;
     margin: 0.3rem;
     border-radius: 50%;
     border-style: solid;
@@ -102,4 +105,11 @@ input[type="radio"] + * {
 .box-cards {
     display: flex;
     justify-content: space-evenly;
+}
+
+.cartel-box {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 00px;
+    height: 30px;
 }
