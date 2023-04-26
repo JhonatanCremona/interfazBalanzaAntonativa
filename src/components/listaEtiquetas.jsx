@@ -69,23 +69,28 @@ export const ListaEtiqueta = () => {
             const settings = {
                 method: "GET",
             }
-            fetchMethod(apiUrl, settings)
-                .then(response => toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
-                    style: {
-                        borderTop : '5px solid green',
-                        fontSize: "20px",
-                        transition: "all 0.3s"
-                        }
-                }))
-                .catch(error => toast.error(`Sin conexión al server ... 🖶`, {
+            const timerId = setTimeout(() => fetchMethod(apiUrl, settings)
+            .then(response => toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
+                style: {
+                    borderTop : '5px solid green',
+                    fontSize: "20px",
+                    transition: "all 0.3s"
+                    }
+            }))
+            .catch((error) => {
+                toast.error(`Sin conexión al server ... 🖶`, {
                     style: {
                         borderTop : '5px solid red',
                         fontSize: "20px",
                         transition: "all 0.3s"
                         }
-                }))
-                
+                })
+                return console.log(`Error Capturado Fuera de la función async: ${error}`)
+            }), 2000)
             
+            setTimeout(() => {clearInterval(timerId); alert("stop");}, 5000)
+
+
             SetEtiquetaPrint(false)
         }
     }, [etiquetaPrint.estado])
