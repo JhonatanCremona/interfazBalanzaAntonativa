@@ -10,6 +10,8 @@ import "../../public/styles/form.css";
 
 
 export const FormEtiqueta = () => {
+
+
     const [newEtiqueta, setNewEtiqueta] = useState({
         nameEtiqueta:"",
         producto:"",
@@ -101,7 +103,7 @@ export const FormEtiqueta = () => {
     }
     return (
         <div>
-            <Title textTile={"Registrar Etiqueta"}/>
+            <Title textTile={"Registrar Etiqueta"} subTitle={"⌨ Asegurate de completar todos los campos del formulario! ⌨"}/>
             <Toaster position="top-left" richColors/>
             <form className="formPost" onSubmit={handleSubmit}>
                 <article className="caja">
@@ -113,7 +115,7 @@ export const FormEtiqueta = () => {
                             </div>
                         )
                     })}
-                    <button className="buttonPost">Guardar</button>
+                    <button className="buttonPost">⏏ Guardar</button>
                 </article>
             </form>
         </div>
