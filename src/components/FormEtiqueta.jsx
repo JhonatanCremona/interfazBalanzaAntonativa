@@ -10,8 +10,6 @@ import "../../public/styles/form.css";
 
 
 export const FormEtiqueta = () => {
-
-
     const [newEtiqueta, setNewEtiqueta] = useState({
         nameEtiqueta:"",
         producto:"",

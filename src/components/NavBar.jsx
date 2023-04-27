@@ -2,6 +2,7 @@ import "../../public/css/nav.css"
 import { Link } from "react-router-dom"
 import { NavLink } from "./lista/NavLink";
 import { BellIcon } from  '@heroicons/react/outline';
+import { ButtonExcel } from "./navbar/ButtonExcel";
 
 export const NavBar = () => {
     const opciones = [
@@ -31,12 +32,16 @@ export const NavBar = () => {
                     </Link>
                 </div>
                 <ul className="lista">
-                    <li><Link to={"/notification"}>
+                    <li>
+                        <Link to={"/notification"}>
                         <BellIcon
                             className="icon" 
                             aria-hidden="true"
                         />
                         </Link>
+                    </li>
+                    <li>
+                        <ButtonExcel/>
                     </li>
                     {
                         opciones.map(({id, href, text}) => {
