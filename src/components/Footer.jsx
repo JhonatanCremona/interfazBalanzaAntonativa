@@ -7,7 +7,7 @@ export const Footer = () => {
     }
     return (
         <div>
-            <p style={variants}>@Jhonatan Fulguera && Tiago Gimenez && Matias Stamm</p>
+            <p style={variants}>@CremonaInoxidable</p>
         </div>
     )
 }

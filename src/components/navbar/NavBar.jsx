@@ -1,8 +1,11 @@
-import "../../public/css/nav.css"
+//Dependencias
 import { Link } from "react-router-dom"
-import { NavLink } from "./lista/NavLink";
 import { BellIcon } from  '@heroicons/react/outline';
-import { ButtonExcel } from "./navbar/ButtonExcel";
+//Componentes
+import { ButtonExcel } from "./ButtonExcel";
+import { NavLink } from "./NavLink";
+//Estylos
+import "../../../public/css/nav.css"
 
 export const NavBar = () => {
     const opciones = [
@@ -18,6 +21,11 @@ export const NavBar = () => {
         },
         {
             id:"3",
+            href:"/producto",
+            text:"Lista Producto"
+        },
+        {
+            id:"4",
             href:"/guardar",
             text:"Crear Etiqueta"
         }

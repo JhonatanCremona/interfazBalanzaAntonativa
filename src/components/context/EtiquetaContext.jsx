@@ -6,7 +6,7 @@ export const EtiquetaContextProvaider = ({ children}) => {
     const [producto, setProducto] = useState([]);
 
     const API = "http://localhost:5000/api/listar";
-    const apiProducto = "http://localhost:5000/prudcto/lista"
+    const apiProducto = "http://localhost:5000/pruductos/listar"
     const example  = "https://dummyjson.com/products"
  
     const options = {
@@ -20,7 +20,7 @@ export const EtiquetaContextProvaider = ({ children}) => {
             .then(json => setEtiqueta(json))
             .catch(err => console.log(err));
 
-        fetch(example, options)
+        fetch(apiProducto, options)
             .then(response => response.json()) 
             .then(json => setProducto(json))
             .catch(err => console.log(err));

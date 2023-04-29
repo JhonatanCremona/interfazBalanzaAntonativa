@@ -1,7 +1,7 @@
 import "../../public/css/Contact.css"
 import Monitor from "../../public/img/server/Monitor"
 
-import { Title } from "../components/lista/Title"
+import { Title } from "./listaPlantilla/Title"
 
 export const Contacts = () => {
     return (

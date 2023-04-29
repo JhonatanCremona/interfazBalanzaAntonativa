@@ -3,7 +3,7 @@ import { useState } from "react";
 
 //Componentes
 import { Toaster, toast } from 'sonner'
-import { Title } from "./lista/Title";
+import { Title } from "./listaPlantilla/Title";
 
 //Styls
 import "../../public/styles/form.css";

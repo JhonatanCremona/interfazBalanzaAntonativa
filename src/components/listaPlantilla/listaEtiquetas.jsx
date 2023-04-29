@@ -1,15 +1,15 @@
 //Dependencias
 import { useContext, useEffect, useState } from "react";
-import { EtiquetaContext } from "./context/EtiquetaContext";
+import { EtiquetaContext } from "../context/EtiquetaContext";
 import { motion } from 'framer-motion'
 
 //Componentes
-import { Title } from "./lista/Title";
-import { Instrucciones } from "./lista/Instrucciones";
+import { Title } from "./Title";
+import { Instrucciones } from "./Instrucciones";
 import { Toaster, toast } from 'sonner'
 
 //Styls 
-import "../../public/css/ListStyle.css";
+import "../../../public/css/ListStyle.css";
 
 export const ListaEtiqueta = () => {
     const { ordernarId } = useContext(EtiquetaContext);
@@ -69,7 +69,7 @@ export const ListaEtiqueta = () => {
             const settings = {
                 method: "GET",
             }
-            const timerId = setTimeout(() => fetchMethod(apiUrl, settings)
+            fetchMethod(apiUrl, settings)
             .then(response => toast.success(`🖶   Imprimiendo etiqueta... 🖶`, {
                 style: {
                     borderTop : '5px solid green',
@@ -86,11 +86,7 @@ export const ListaEtiqueta = () => {
                         }
                 })
                 return console.log(`Error Capturado Fuera de la función async: ${error}`)
-            }), 2000)
-            
-            setTimeout(() => {clearInterval(timerId); alert("stop");}, 5000)
-
-
+            });
             SetEtiquetaPrint(false)
         }
     }, [etiquetaPrint.estado])
