@@ -21,8 +21,8 @@ export const NavBar = () => {
         },
         {
             id:"3",
-            href:"/producto",
-            text:"Lista Producto"
+            href:"/grafica",
+            text:"Grafica"
         },
         {
             id:"4",

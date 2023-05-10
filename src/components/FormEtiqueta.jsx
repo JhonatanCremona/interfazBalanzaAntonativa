@@ -25,7 +25,7 @@ export const FormEtiqueta = () => {
         });
     };
 
-    const API = "http://localhost:5000/api/guardar";
+    const API = "http://localhost:5000/etiquetas/guardar";
     const settings = {
         method: "POST", 
         mode: "cors", 
@@ -50,7 +50,6 @@ export const FormEtiqueta = () => {
         guardarEtiqueta(API,settings)
             .then((data) => toast.success('Registro exitoso!'))
             .catch(err => toast.error("Ocurrio un error - sin conexion ERROR 500"));
-            
     };
 
     const opciones = [
@@ -80,6 +79,14 @@ export const FormEtiqueta = () => {
         },
         {
             id:"3",
+            type: "number",
+            className:"text-input",
+            data: "unidad",
+            text:"Cantidad",
+            examples:"Ej:4"
+        },
+        {
+            id:"4",
             type: "date",
             className:"text-input",
             data: "fechaVencimiento",
@@ -87,7 +94,7 @@ export const FormEtiqueta = () => {
             examples: "Ej:2023-11-4"
         },
         {
-            id:"4",
+            id:"5",
             type: "text",
             className:"text-input",
             data:"operario",

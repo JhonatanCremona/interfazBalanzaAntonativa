@@ -11,7 +11,7 @@ import { EtiquetaContextProvaider } from './components/context/EtiquetaContext';
 import { Contacts } from './components/Contact';
 import { Layout } from './components/Layaout';
 import { Footer } from './components/Footer';
-import { ListaProducto } from './components/listaProducto/ListaProducto';
+import { Grafica } from './components/listaProducto/Grafica';
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
             <Route path='listar' element={<ListaEtiqueta/>}/>
             <Route path='guardar' element={<FormEtiqueta/>}/>
             <Route path='contacts' element={<Contacts/>}/>
-            <Route path='producto' element={<ListaProducto/>}/>
+            <Route path='grafica' element={<Grafica/>}/>
           </Route>
         </Routes>
         <Footer/>

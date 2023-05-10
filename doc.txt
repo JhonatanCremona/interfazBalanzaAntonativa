@@ -1,0 +1,8 @@
+server {
+    listen 5000;
+    listen [::]:5000;
+    root /home/ubuntu/app-deploy/dist;
+    location / {
+        try_files Suri /index.html;
+    }
+}

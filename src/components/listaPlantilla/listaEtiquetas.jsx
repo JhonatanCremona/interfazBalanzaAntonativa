@@ -13,6 +13,7 @@ import "../../../public/css/ListStyle.css";
 
 export const ListaEtiqueta = () => {
     const { ordernarId } = useContext(EtiquetaContext);
+    
     const [etiquetaDelete, setEtiquetaDelete] = useState({
         id:"",
         name:"",
@@ -42,16 +43,19 @@ export const ListaEtiqueta = () => {
             const apiUrl = `http://localhost:5000/etiquetas/${etiquetaDelete.id}`
             const settings = {
                 method: "Delete",
+                mode: "cors", 
+                cache: "no-cache", 
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                  redirect: "follow",
+                  referrerPolicy: "no-referrer",
             }
             fetchMethod(apiUrl, settings)
-                .then(response => console.log(response.json))
+                .then((response) => toast.success('Eliminaste Forma exitoso!'))
                 .catch(error => console.log(error))
-            toast.message(`Eliminaste la Etiqueta:`, {
-                description: ` - ${etiquetaDelete.name} -`,
-                style: {
-                    borderTop : '5px solid red',
-                    }
-            })
+            
             setEtiquetaDelete({id:"",name:"",estado:false})
         }
     },[etiquetaDelete.estado]);
@@ -62,6 +66,9 @@ export const ListaEtiqueta = () => {
             const apiUrl = `http://localhost:5000/etiquetas/imprimir/${etiquetaPrint.id}`
             const settings = {
                 method: "GET",
+                mode: "cors", 
+                cache: "no-cache", 
+                credentials: "same-origin",
             }
             fetchMethod(apiUrl, settings)
             .then(response => console.log(response.json))
@@ -139,7 +146,6 @@ export const ListaEtiqueta = () => {
                                         </button>
                                         <input type="radio" id="html" name = "test" value={etiqueta.nameEtiqueta} onChange={(e)=> {SetEtiquetaPrint({id: etiqueta.id, estado: e.target.checked})}}/>
                                     </div>
-                                    
                                 </div>
                             </article>
                         </motion.div>
